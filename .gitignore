@@ -21,3 +21,12 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+public/media/
+
+src/env/.env-dev
+src/env/.env-prod
+
+.env.development
+
+.env.production
