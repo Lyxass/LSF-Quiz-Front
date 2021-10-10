@@ -55,7 +55,7 @@ export default {
     validate(){
       let userResponse = this.currentInput
       userResponse = userResponse.replace(/\s/g, '');
-      this.isCorrect = userResponse === this.currentInput
+      this.isCorrect = userResponse === this.currentWord
       this.isFinish = true
     },
     async newWord(){
