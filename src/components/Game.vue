@@ -1,13 +1,13 @@
 <template>
   <div id="game">
     <div id="gameDiv">
-      <video :src="mediaURL" autoplay controls></video>
+      <video :src="mediaURL" autoplay controls loop></video>
       <input type="text" placeholder="Entrer votre mot ici" v-model="currentInput">
       <div class="buttons" >
         <button type="button" class="btn btn-success" v-on:click="validate">Valider</button>
       </div>
     </div>
-    <div v-if="isFinish" id="endDiv" v-bind:class="{ resultBackgound: isFinish }">
+    <div v-if="isFinish" id="endDiv" class="resultBackgound">
       <div id="endDivSuccess" v-if="isCorrect">
         <p class="text-success result">Bravo !</p>
         <h2> Le mot est bien : </h2>
@@ -66,6 +66,7 @@ export default {
       getRandomWord().then((res) =>{
         this.currentWord = res
         this.isFinish = false;
+        this.currentInput = "";
       })
     }
   }
@@ -83,9 +84,9 @@ export default {
 }
 
 #gameDiv{
-  width: 30%;
-  min-height: 500px;
-  min-width: 500px;
+  width: 90%;
+  min-height: 300px;
+  min-width: 200px;
   *{
     margin-bottom: 10px;
   }
@@ -99,6 +100,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 #endDivSuccess, #endDivFailed{
@@ -121,6 +123,7 @@ export default {
 video{
   height: auto;
   width: 100%;
+  max-height: 80%;
 }
 
 .result{
