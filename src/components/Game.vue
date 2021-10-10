@@ -5,7 +5,6 @@
       <input type="text" placeholder="Entrer votre mot ici" v-model="currentInput">
       <div class="buttons" >
         <button type="button" class="btn btn-success" v-on:click="validate">Valider</button>
-        <button type="button" class="btn btn-light">Je ne sais pas</button>
       </div>
     </div>
     <div v-if="isFinish" id="endDiv" v-bind:class="{ resultBackgound: isFinish }">
