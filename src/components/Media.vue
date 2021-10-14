@@ -27,7 +27,11 @@ export default {
 </script>
 
 <style scoped>
-  video, img{
+  video{
     max-width: 70%
+  }
+
+  img{
+    max-width: 20%;
   }
 </style>

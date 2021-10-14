@@ -1,9 +1,6 @@
 <template>
   <div id="inputContainer">
-    <input type="text" placeholder="Entrer votre mot ici" v-model="currentInput" v-on:keyup.enter="validate">
-    <div class="buttons" >
-      <button type="button" class="btn btn-success" v-on:click="validate">Valider</button>
-    </div>
+    <input class="inputDiv" type="text" placeholder="Entrer votre mot ici" v-model="currentInput" v-on:keyup.enter="validate">
   </div>
 </template>
 
@@ -41,6 +38,27 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+#inputContainer {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  padding: 2%;
+  //background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputDiv{
+  border-radius: 10px;
+  background-color:grey;
+  opacity: 0.9;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
 
 </style>

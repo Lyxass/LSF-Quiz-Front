@@ -1,5 +1,6 @@
 <template>
   <div id="gameContainer">
+    <router-link to="/" id="backToMenu"> ← </router-link>
     <Media :isVideo=isVideo> </Media>
     <TextGame v-if="!useAlphabeticKeyboard"></TextGame>
     <div v-if="isFinish" id="endDiv" class="resultBackgound">
@@ -85,4 +86,17 @@ export default {
   opacity: .9;
 }
 
+#backToMenu{
+  position: absolute;
+  top:0;
+  left: 0;
+  color: white;
+  border-radius: 10px;
+  background-color: grey;
+  margin: 10px;
+  padding: 10px;
+  width: 50px;
+  height: 45px;
+  text-decoration: none;
+}
 </style>
