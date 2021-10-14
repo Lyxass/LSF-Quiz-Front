@@ -5,8 +5,8 @@
     <TextGame v-if="!useAlphabeticKeyboard"></TextGame>
     <div v-if="isFinish" id="endDiv" class="resultBackgound">
       <div id="endDivSuccess">
-        <p class="text-success result" v-if="isCorrect" >Bravo !</p>
-        <p class="text-danger result" v-else >Dommage !</p>
+        <h1 class="text-success result" v-if="isCorrect" > Bravo !</h1>
+        <h1 class="text-danger result" v-else >Dommage !</h1>
         <h2 v-if="isCorrect"> La lettre était bien : </h2>
         <h2 v-else> La lettre était : </h2>
         <h1><strong>{{currentWord}}</strong></h1>
@@ -50,6 +50,10 @@ export default {
 
 <style scoped>
 
+.result{
+
+}
+
 #endDiv{
   position: absolute;
   width: 100%;
@@ -85,7 +89,7 @@ export default {
 
 .resultBackgound{
   background-color: grey;
-  opacity: .9;
+  opacity: .98;
 }
 
 #backToMenu{
