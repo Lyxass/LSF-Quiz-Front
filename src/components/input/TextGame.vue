@@ -42,7 +42,7 @@ export default {
 
 #inputContainer {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left:0;
   width: 100%;
   padding: 2%;
