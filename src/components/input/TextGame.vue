@@ -59,6 +59,7 @@ export default {
   width: 100%;
   color: white;
   text-align: center;
+  height: 40px;
 }
 
 </style>

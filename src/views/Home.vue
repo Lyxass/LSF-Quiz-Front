@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <div class="menu">
-      <h1 id="title"> LSF Game !</h1>
+      <img src="@/assets/logo_lsf.png">
       <div class="btnContainer">
-        <router-link class="btn btn-success" to="/game/randomWords"> Jeu </router-link>
+        <router-link class="btn btn-success" to="/game/randomWords"> Tests sur environ 555 mots</router-link>
         <router-link class="btn btn-success" to="/game/alphabet"> Alphabet LSF </router-link>
       </div>
     </div>
@@ -27,6 +27,8 @@ export default {
 }
 
 .btnContainer{
+  margin-top: 10px;
+  max-width: 50%;
   display: flex;
   flex-direction: column;
   height: 60%;
@@ -34,6 +36,17 @@ export default {
 
 .btn{
   margin-top: 10px;
+}
+
+img{
+  width: 50%;
+}
+
+.menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #title{

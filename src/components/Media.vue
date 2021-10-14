@@ -8,16 +8,15 @@
 <script>
 export default {
   name: "media",
-  props:{
-    isVideo : Boolean
+  props: {
+    isVideo: Boolean
   },
   computed: {
-    mediaURL: function(){
-      console.log("in media :" , this.isVideo)
-      if(this.isVideo){
+    mediaURL: function () {
+      console.log("in media :", this.isVideo)
+      if (this.isVideo) {
         return process.env.VUE_APP_BACK_END_GET_VIDEO + this.$store.state.gameStore.currentWord
-      }
-      else{
+      } else {
         return process.env.VUE_APP_BACK_END_GET_PICTURE + this.$store.state.gameStore.currentWord
       }
 
@@ -27,11 +26,17 @@ export default {
 </script>
 
 <style scoped>
-  video{
-    max-width: 70%
-  }
+#media {
+  width: 100%;
+}
 
-  img{
-    max-width: 20%;
-  }
+video {
+  max-width: 70%;
+  width: 70%
+}
+
+img {
+  max-width: 20%;
+  width: 20%;
+}
 </style>
