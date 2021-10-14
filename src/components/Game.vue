@@ -1,7 +1,8 @@
 <template>
   <div id="game">
     <div id="gameDiv">
-      <video :src="mediaURL" autoplay controls loop></video>
+      <video v-if="isVideo" :src="mediaURL" autoplay controls loop muted></video>
+      <img id="img" v-else :src="mediaURL">
       <input type="text" placeholder="Entrer votre mot ici" v-model="currentInput">
       <div class="buttons" >
         <button type="button" class="btn btn-success" v-on:click="validate">Valider</button>
@@ -26,13 +27,14 @@
 
 <script>
 
-import {getRandomWord} from "@/models/gameApi"
-
 export default {
   name: "Game",
+  props:{
+    isVideo : Boolean,
+    apiFunction: Function
+  },
   beforeMount() {
     this.newWord()
-    console.log("Media URL : ",this.mediaURL)
   },
   data(){
     return{
@@ -44,10 +46,13 @@ export default {
   },
   computed: {
     mediaURL: function(){
-      console.log("env : ", process.env.VUE_APP_BACK_END_GET_FILE)
-      console.log("env2 : ", this.currentWord)
-      console.log(process.env.VUE_APP_BACK_END_GET_FILE + this.currentWord)
-      return process.env.VUE_APP_BACK_END_GET_FILE + this.currentWord
+      if(this.isVideo){
+        return process.env.VUE_APP_BACK_END_GET_VIDEO + this.currentWord
+      }
+      else{
+        return process.env.VUE_APP_BACK_END_GET_PICTURE + this.currentWord
+      }
+
     }
   },
   methods:{
@@ -58,12 +63,12 @@ export default {
       this.isFinish = true
     },
     async newWord(){
-      getRandomWord().then((res) =>{
+      this.apiFunction().then((res) =>{
         this.currentWord = res
       })
     },
     nextRound(){
-      getRandomWord().then((res) =>{
+      this.apiFunction().then((res) =>{
         this.currentWord = res
         this.isFinish = false;
         this.currentInput = "";
@@ -87,6 +92,7 @@ export default {
   width: 90%;
   min-height: 300px;
   min-width: 200px;
+  max-width: 80%;
   *{
     margin-bottom: 10px;
   }
@@ -132,6 +138,10 @@ video{
 
 input{
   width: 100%;
+}
+
+#img{
+  max-width: 30%;
 }
 
 </style>
