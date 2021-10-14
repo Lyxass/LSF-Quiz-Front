@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <Game v-if="gameName === 'randomWords'" :apiFunction="apiFunction" :isVideo=true></Game>
-    <Game v-else-if="gameName === 'alphabet'" :apiFunction="apiFunction" :isVideo=false></Game>
+    <Game v-if="gameName === 'randomWords'" @newRound="getNewWord"
+          :isVideo="isVideo" :useAlphabeticKeyboard="useAlphabeticKeyboard"></Game>
+    <Game v-else-if="gameName === 'alphabet'" @newRound="getNewWord"
+          :isVideo="isVideo" :useAlphabeticKeyboard="useAlphabeticKeyboard"></Game>
   </div>
 </template>
 
@@ -12,37 +14,68 @@ import {getRandomWord, getRandomLetter} from '@/models/gameApi.js'
 
 export default {
   name: 'Home',
-  props:["gameName"],
+  props: ["gameName"],
   components: {
     Game
   },
-  data(){
-    return {}
-  },
-  computed:{
-    apiFunction(){
-      switch(this.gameName){
+  methods: {
+    getNewWord() {
+      switch (this.gameName) {
         case "alphabet":
-          return getRandomLetter
-        case "randomWords":
-          return getRandomWord
+          return getRandomLetter().then((res) =>{
+            this.setCurrentWord(res)
+          });
         default:
-          return getRandomWord
+          return getRandomWord().then((res) =>{
+            this.setCurrentWord(res)
+          });
       }
+    },
+    setCurrentWord(value){
+        this.$store.commit("setState", {stateToUpdate:"currentWord", newValue:value})
+        this.$store.commit("setState", {stateToUpdate:"isFinish", newValue:false})
+        this.$store.commit("setState", {stateToUpdate:"currentInput", newValue:""})
     }
   },
+  data() {
+    return {
+      isVideo: false,
+      useAlphabeticKeyboard: false,
+    }
+  },
+  beforeCreate() {
+
+  },
+  computed: {},
   beforeMount() {
-    console.log(this.gameName)
+    switch (this.gameName) {
+      case "alphabet":
+        this.isVideo = false;
+        this.useAlphabeticKeyboard = false;
+        break;
+      case "randomWords":
+        this.isVideo = true;
+        this.useAlphabeticKeyboard = false;
+        break;
+      default:
+        this.isVideo = true;
+        this.useAlphabeticKeyboard = false;
+        break
+    }
   }
 }
+
 </script>
 
 
 <style scoped>
-  .home{
-    height: 100%;
-    width: 100%;
-  }
+.home {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 </style>

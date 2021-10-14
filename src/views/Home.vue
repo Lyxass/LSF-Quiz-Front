@@ -1,9 +1,11 @@
 <template>
   <div id="home">
     <div class="menu">
-      <h1> LSF Game !</h1>
-      <router-link to="/game/randomWords"> Jeu </router-link>
-      <router-link to="/game/alphabet"> Alphabet LSF </router-link>
+      <h1 id="title"> LSF Game !</h1>
+      <div class="btnContainer">
+        <router-link class="btn btn-success" to="/game/randomWords"> Jeu </router-link>
+        <router-link class="btn btn-success" to="/game/alphabet"> Alphabet LSF </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +26,19 @@ export default {
   flex-direction: column;
 }
 
-.centeredContent{
+.btnContainer{
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+}
+
+.btn{
+  margin-top: 10px;
+}
+
+#title{
 
 }
+
+
 </style>
