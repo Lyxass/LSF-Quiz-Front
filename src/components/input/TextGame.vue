@@ -13,8 +13,9 @@ export default {
   },
   methods:{
     validate(){
-      let userResponse = this.currentInput
+      let userResponse = this.currentInput.toLowerCase()
       userResponse = userResponse.replace(/\s/g, '');
+      userResponse = userResponse.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       console.log("La réponse saisie :" , userResponse)
       console.log("la bonne reponse : ", this.currentWord)
 

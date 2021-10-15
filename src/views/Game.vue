@@ -32,7 +32,7 @@ export default {
       }
     },
     setCurrentWord(value){
-        this.$store.commit("setState", {stateToUpdate:"currentWord", newValue:value})
+        this.$store.commit("setState", {stateToUpdate:"currentWord", newValue:value.toLowerCase()})
         this.$store.commit("setState", {stateToUpdate:"isFinish", newValue:false})
         this.$store.commit("setState", {stateToUpdate:"currentInput", newValue:""})
     }
