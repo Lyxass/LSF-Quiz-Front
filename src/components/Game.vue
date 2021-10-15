@@ -7,8 +7,8 @@
       <div id="endDivSuccess">
         <h1 class="text-success result" v-if="isCorrect" > Bravo !</h1>
         <h1 class="text-danger result" v-else >Dommage !</h1>
-        <h2 v-if="isCorrect"> La lettre était bien : </h2>
-        <h2 v-else> La lettre était : </h2>
+        <h2 v-if="isCorrect"> La réponse était bien : </h2>
+        <h2 v-else> La réponse était : </h2>
         <h1><strong>{{currentWord}}</strong></h1>
         <button type="button" class="btn btn-success" v-on:click="nextRound">Suivant</button>
       </div>
