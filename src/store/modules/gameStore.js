@@ -1,15 +1,22 @@
 const gameModule = {
     state: () => ({
         currentWord: "",
-        currentInput:"",
+        currentInput: "",
         isFinish: false,
         isCorrect: false
 
     }),
     mutations: {
-        setState(state, {stateToUpdate, newValue}) {
-            console.log("update : ", stateToUpdate ," with value : ", newValue)
-            state[stateToUpdate] = newValue
+        setCurrentWord(state,value) {
+            state.currentWord = value;
+        },
+        setCurrentInput(state,value) {
+            state.currentInput = value;
+        },
+        setIsFinish(state,value) {
+            state.isFinish = value;
+        },setIsCorrect(state,value) {
+            state.isCorrect = value;
         }
     },
     actions: {},

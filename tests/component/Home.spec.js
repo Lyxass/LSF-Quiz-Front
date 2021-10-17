@@ -11,7 +11,7 @@ beforeEach(() => {
     window.location.href = process.env.VUE_APP_BASE_URL
 });
 
-test.each(params)('Test Home page', async (testId, path) => {
+test.each(params)('Test Home view', async (testId, path) => {
     // The render method returns a collection of utilities to query your component.
     const {getByTestId} = render(Home, {router})
     expect(window.location.href).toBe(process.env.VUE_APP_BASE_URL)

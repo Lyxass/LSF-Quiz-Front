@@ -1,4 +1,6 @@
-export async function getRandomWord(){
+const fetch = require("node-fetch")
+
+export async function getRandomFromApi(url){
     const response = await fetch(process.env.VUE_APP_BACK_END_BASE_URL+"game/random-word", {
         method: 'get', // string or object
         headers: {

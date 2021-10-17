@@ -10,7 +10,7 @@
 <script>
 // @ is an alias to /src
 import Game from '@/components/Game.vue'
-import {getRandomWord, getRandomLetter} from '@/models/gameApi.js'
+import {getRandomFromApi} from '@/models/gameApi.js'
 
 export default {
   name: 'Home',
@@ -20,46 +20,35 @@ export default {
   },
   methods: {
     getNewWord() {
-      switch (this.gameName) {
-        case "alphabet":
-          return getRandomLetter().then((res) =>{
-            this.setCurrentWord(res)
-          });
-        default:
-          return getRandomWord().then((res) =>{
-            this.setCurrentWord(res)
-          });
-      }
+      return getRandomFromApi(this.apiURL).then((res) => {
+        this.setCurrentWord(res)
+      });
     },
-    setCurrentWord(value){
-        this.$store.commit("setState", {stateToUpdate:"currentWord", newValue:value.toLowerCase()})
-        this.$store.commit("setState", {stateToUpdate:"isFinish", newValue:false})
-        this.$store.commit("setState", {stateToUpdate:"currentInput", newValue:""})
+    setCurrentWord(value) {
+      this.$store.commit("setCurrentWord", value.toLowerCase())
+      this.$store.commit("setIsFinish", false)
+      this.$store.commit("setCurrentInput", "")
     }
   },
   data() {
     return {
       isVideo: false,
-      useAlphabeticKeyboard: false,
+      apiURL: ""
     }
-  },
-  beforeCreate() {
-
   },
   computed: {},
   beforeMount() {
     switch (this.gameName) {
       case "alphabet":
         this.isVideo = false;
-        this.useAlphabeticKeyboard = false;
+        this.apiURL = process.env.VUE_APP_BACK_END_BASE_URL + "game/random-letter"
         break;
       case "randomWords":
         this.isVideo = true;
-        this.useAlphabeticKeyboard = false;
+        this.apiURL = process.env.VUE_APP_BACK_END_BASE_URL + "game/random-word"
         break;
       default:
         this.isVideo = true;
-        this.useAlphabeticKeyboard = false;
         break
     }
   }
