@@ -12,15 +12,20 @@ export default {
     }
   },
   methods:{
+    formatString(str){
+      str = str.toLowerCase()
+      str = str.replace(/\s/g, '');
+      str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      return str
+    },
     validate(){
-      let userResponse = this.currentInput.toLowerCase()
-      userResponse = userResponse.replace(/\s/g, '');
-      userResponse = userResponse.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      let userResponse = this.formatString(this.currentInput)
+      let currentWord = this.formatString(this.currentWord)
       console.log("La réponse saisie :" , userResponse)
       console.log("la bonne reponse : ", this.currentWord)
 
-      this.$store.commit("setState", {stateToUpdate:"isCorrect", newValue:userResponse === this.currentWord})
-      this.$store.commit("setState", {stateToUpdate:"isFinish", newValue:true})
+      this.$store.commit("setIsCorrect", userResponse === currentWord)
+      this.$store.commit("setIsFinish", true)
     },
   },
   computed: {
@@ -29,7 +34,7 @@ export default {
         return this.$store.state.gameStore.currentInput
       },
       set (value) {
-        this.$store.commit("setState", {stateToUpdate:"currentInput", newValue:value})
+        this.$store.commit("setCurrentInput", value)
       }
     },
     currentWord(){

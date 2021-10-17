@@ -1,18 +1,7 @@
 const fetch = require("node-fetch")
 
 export async function getRandomFromApi(url){
-    const response = await fetch(process.env.VUE_APP_BACK_END_BASE_URL+"game/random-word", {
-        method: 'get', // string or object
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    const res = await response.json()
-    return res.data
-}
-
-export async function getRandomLetter(){
-    const response = await fetch(process.env.VUE_APP_BACK_END_BASE_URL+"game/random-letter", {
+    const response = await fetch(url, {
         method: 'get', // string or object
         headers: {
             'Content-Type': 'application/json'
