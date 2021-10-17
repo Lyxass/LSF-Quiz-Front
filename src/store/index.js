@@ -1,17 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-
-import gameStore from "./modules/gameStore";
+import storeStruct from "./storeStruct";
 
 Vue.use(Vuex)
 
 /* eslint-disable no-new */
-const store = new Vuex.Store({
-  plugins: [createPersistedState()],
-  modules: {
-    gameStore: gameStore
-  }
-})
+const store = new Vuex.Store(storeStruct)
 
 export default store

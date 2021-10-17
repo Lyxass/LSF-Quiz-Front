@@ -30,3 +30,5 @@ src/env/.env-prod
 .env.development
 
 .env.production
+
+coverage/

@@ -3,8 +3,8 @@
     <div class="menu">
       <img src="@/assets/logo_lsf.png">
       <div class="btnContainer">
-        <router-link class="btn btn-success" to="/game/randomWords"> Tests sur environ 555 mots</router-link>
-        <router-link class="btn btn-success" to="/game/alphabet"> Alphabet LSF </router-link>
+        <router-link data-testid="randomWords" class="btn btn-success" to="/game/randomWords"> Tests sur environ 555 mots</router-link>
+        <router-link data-testid="alphabet" class="btn btn-success" to="/game/alphabet"> Alphabet LSF </router-link>
       </div>
     </div>
   </div>
