@@ -37,4 +37,3 @@ test.each(arg)('Test if the media src is correctly set', async (isVideo, current
     console.log(media.src)
 
 })
-

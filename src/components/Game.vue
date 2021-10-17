@@ -2,8 +2,8 @@
   <div id="gameContainer">
     <router-link to="/" id="backToMenu"> ← </router-link>
     <Media :isVideo=isVideo> </Media>
-    <TextGame v-if="!useAlphabeticKeyboard"></TextGame>
-    <div v-if="isFinish" id="endDiv" class="resultBackgound">
+    <TextGame></TextGame>
+    <div v-if="isFinish" id="endDiv" data-testid="endDiv" class="resultBackgound">
       <div id="endDivSuccess">
         <h1 class="text-success result" v-if="isCorrect" > Bravo !</h1>
         <h1 class="text-danger result" v-else >Dommage !</h1>
@@ -25,7 +25,7 @@ export default {
   components: {
     Media,TextGame
   },
-  props:["isVideo","useAlphabeticKeyboard", "apiGetFunction"],
+  props:["isVideo"],
   beforeMount() {
     this.nextRound()
   },

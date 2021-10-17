@@ -1,6 +1,6 @@
 import {render, fireEvent} from '@testing-library/vue'
 import Home from '@/views/Home.vue'
-import router from "../../src/router/index";
+import router from "@/router/index";
 
 let params = [
     ["randomWords", "game/randomWords"],
