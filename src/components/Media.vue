@@ -1,7 +1,7 @@
 <template>
   <div id="media">
-    <video v-if="isVideo" :src="mediaURL" autoplay controls loop muted></video>
-    <img id="img" v-else :src="mediaURL">
+    <video data-testid="video" v-if="isVideo" :src="mediaURL" autoplay controls loop muted></video>
+    <img data-testid="image" id="img" v-else :src="mediaURL">
   </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
   },
   computed: {
     mediaURL: function () {
-      console.log("in media :", this.isVideo)
       if (this.isVideo) {
         return process.env.VUE_APP_BACK_END_GET_VIDEO + this.$store.state.gameStore.currentWord
       } else {
