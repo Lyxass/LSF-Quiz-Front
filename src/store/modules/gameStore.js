@@ -8,6 +8,7 @@ const gameModule = {
     }),
     mutations: {
         setCurrentWord(state,value) {
+            console.log("set to value ", value)
             state.currentWord = value;
         },
         setCurrentInput(state,value) {

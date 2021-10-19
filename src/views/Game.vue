@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <Game v-if="gameName === 'randomWords'" @newRound="getNewWord"
-          :isVideo="isVideo" :useAlphabeticKeyboard="useAlphabeticKeyboard"></Game>
+    <Game v-if="gameName === 'randomWords' " @newRound="getNewWord"
+          :isVideo="isVideo"></Game>
     <Game v-else-if="gameName === 'alphabet'" @newRound="getNewWord"
-          :isVideo="isVideo" :useAlphabeticKeyboard="useAlphabeticKeyboard"></Game>
+          :isVideo="isVideo"></Game>
+    <Game v-else @newRound="getNewWord"
+          :isVideo="isVideo"></Game>
   </div>
 </template>
 
@@ -25,6 +27,7 @@ export default {
       });
     },
     setCurrentWord(value) {
+      console.log("new word")
       this.$store.commit("setCurrentWord", value.toLowerCase())
       this.$store.commit("setIsFinish", false)
       this.$store.commit("setCurrentInput", "")
@@ -48,8 +51,10 @@ export default {
         this.apiURL = process.env.VUE_APP_BACK_END_BASE_URL + "game/random-word"
         break;
       default:
+        console.log("default")
         this.isVideo = true;
-        break
+        this.apiURL = process.env.VUE_APP_BACK_END_BASE_URL + "game/random-word"
+        break;
     }
   }
 }

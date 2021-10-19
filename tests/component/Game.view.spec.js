@@ -6,6 +6,7 @@ import Vuex from "vuex";
 import {createLocalVue} from "@vue/test-utils";
 
 beforeEach(async () => {
+    console.log("before")
     jest.clearAllMocks();
 });
 
@@ -59,3 +60,31 @@ test('Test alphabet correctly set in store', async () => {
     expect(store.state.gameStore.currentWord).toBe("a")
 })
 
+test('Test default', async () => {
+    const localVue = createLocalVue()
+    localVue.use(Vuex)
+    let store = await new Vuex.Store(storeStruct)
+
+    const mockApiCall = jest.spyOn(GameApi,"getRandomFromApi")
+    store.commit("setCurrentWord", "")
+    expect(store.state.gameStore.currentWord).toBe("")
+
+
+    mockApiCall.mockImplementation((apiUrl)=>{
+        console.log(apiUrl)
+        expect(apiUrl).toBe(process.env.VUE_APP_BACK_END_BASE_URL + "game/random-word")
+        return new Promise((resolve) =>{
+            resolve("allumer")
+        })
+    })
+
+    await render(Game, {
+        store, props: {
+            gameName: "default"
+        }
+    })
+
+    expect(store.state.gameStore.isFinish).toBeFalsy()
+    expect(store.state.gameStore.currentInput).toBe("")
+    expect(store.state.gameStore.currentWord).toBe("allumer")
+})
