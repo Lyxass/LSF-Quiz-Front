@@ -3,7 +3,7 @@ import Game from '@/components/Game.vue'
 import storeStruct from "../../src/store/storeStruct";
 import Vuex from "vuex";
 import {createLocalVue} from "@vue/test-utils";
-import * as gameApi from "@/models/gameApi"
+import * as gameApi from "@/services/gameApi"
 import router from "../../src/router/index";
 
 beforeEach(async () => {

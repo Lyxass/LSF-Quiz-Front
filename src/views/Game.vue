@@ -12,17 +12,22 @@
 <script>
 // @ is an alias to /src
 import Game from '@/components/Game.vue'
-import {getRandomFromApi} from '@/models/gameApi.js'
+import {getRandomFromApi} from '@/services/gameApi.js'
 
 export default {
   name: 'Home',
-  props: ["gameName"],
+  props: {
+    gameName: String
+  },
   components: {
     Game
   },
   methods: {
     getNewWord() {
       return getRandomFromApi(this.apiURL).then((res) => {
+        if (res === undefined) {
+          console.log("Unable to get the word from : ", this.apiURL)
+        }
         this.setCurrentWord(res)
       });
     },

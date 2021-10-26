@@ -1,7 +1,7 @@
 import {render} from '@testing-library/vue'
 import Game from '@/views/Game.vue'
 import storeStruct from "../../src/store/storeStruct";
-import * as GameApi from "@/models/gameApi";
+import * as GameApi from "@/services/gameApi";
 import Vuex from "vuex";
 import {createLocalVue} from "@vue/test-utils";
 
