@@ -21,7 +21,7 @@ test('Test randomWords correctly set in store', async () => {
     mockApiCall.mockImplementation((apiUrl)=>{
         expect(apiUrl).toBe(process.env.VUE_APP_BACK_END_BASE_URL + "game/random-word")
         return new Promise((resolve) =>{
-            resolve("allumer")
+            resolve({data:"allumer"})
         })
     })
 
@@ -46,7 +46,7 @@ test('Test alphabet correctly set in store', async () => {
     mockApiCall.mockImplementation((apiUrl)=>{
         expect(apiUrl).toBe(process.env.VUE_APP_BACK_END_BASE_URL + "game/random-letter")
         return new Promise((resolve) =>{
-            resolve("a")
+            resolve({data:"a"})
         })
     })
 
@@ -74,7 +74,7 @@ test('Test default', async () => {
         console.log(apiUrl)
         expect(apiUrl).toBe(process.env.VUE_APP_BACK_END_BASE_URL + "game/random-word")
         return new Promise((resolve) =>{
-            resolve("allumer")
+            resolve({data:"allumer"})
         })
     })
 

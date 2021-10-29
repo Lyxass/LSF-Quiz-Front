@@ -28,7 +28,7 @@ export default {
         if (res === undefined) {
           console.log("Unable to get the word from : ", this.apiURL)
         }
-        this.setCurrentWord(res)
+        this.setCurrentWord(res.data)
       });
     },
     setCurrentWord(value) {

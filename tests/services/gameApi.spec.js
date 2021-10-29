@@ -12,19 +12,28 @@ describe("Test Api Service", () => {
     test('Test get word', async () => {
         jest.mock("axios")
 
-        axios.get.mockImplementation(() => Promise.resolve({
-            status: 200, data: "tesst"
-        }));
+        let response = {
+            data: {
+                data: "tesst"
+            },
+            "status": 200,
+        }
 
-        expect(await getRandomFromApi("URL in useless in test")).toBe("tesst");
+        axios.get.mockImplementation(() => Promise.resolve(response));
+        let result = await getRandomFromApi("URL in useless in test")
+        expect(result.data).toBe("tesst");
     })
 
-    test('Test get word', async () => {
+    test('Test on error', async () => {
         jest.mock("axios")
 
-        axios.get.mockImplementation(() => Promise.reject({
-            status: 400, data: "tesst"
-        }));
+        let response = {
+            "data": {
+                "data": "tesst"
+            },
+            "status": 400,
+        }
+        axios.get.mockImplementation(() => Promise.reject(response));
 
         expect(await getRandomFromApi("URL in useless in test")).toBe(null);
     })
