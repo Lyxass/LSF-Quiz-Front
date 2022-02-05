@@ -1,10 +1,11 @@
 # LSF Quiz Front
 
+This is the fron end of the application
+You can find the back end by clicking [here](http://google.fr)
+
 This application has been made to help learn sign language. The principle is simple, you can select two exercises :
 - Test your understanding knowledge by watching a video and guessing the word
 - Test your knowledge of the sign language alphabet
-
-This application needs a Back-end to work. You can find it by clicking [here](http://google.fr)
 
 This application is basic, but meets the needs we have. 
 
