@@ -18,7 +18,6 @@ export default {
       } else {
         return process.env.VUE_APP_BACK_END_GET_PICTURE + this.$store.state.gameStore.currentWord
       }
-
     }
   },
 }
@@ -27,6 +26,7 @@ export default {
 <style scoped>
 #media {
   width: 100%;
+  max-width: 1200px;
 }
 
 video {

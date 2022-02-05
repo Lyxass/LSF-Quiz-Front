@@ -16,6 +16,10 @@ const routes = [
     name: 'Game',
     component: Game,
     props: true
+  },
+  {
+    path:"*",
+    redirect:'/'
   }
 ]
 

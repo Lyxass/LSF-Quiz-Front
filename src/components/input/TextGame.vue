@@ -66,6 +66,12 @@ export default {
   color: white;
   text-align: center;
   height: 40px;
+  max-width: 500px;
+
 }
+
+.inputDiv::-webkit-input-placeholder{
+    color:white;
+  }
 
 </style>
