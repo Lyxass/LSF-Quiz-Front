@@ -1,7 +1,7 @@
 # LSF Quiz Front
 
 This is the fron end of the application
-You can find the back end by clicking [here](http://google.fr)
+You can find the back end by clicking [here](https://github.com/Lyxass/LSF-Quiz-Back)
 
 This application has been made to help learn sign language. The principle is simple, you can select two exercises :
 - Test your understanding knowledge by watching a video and guessing the word
