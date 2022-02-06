@@ -1,5 +1,5 @@
 # étape de build
-FROM node:lts-alpine as build-stage
+FROM node:14.19.0-buster as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
